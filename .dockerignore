@@ -1,7 +1,0 @@
-_*
-.vagrant
-.travis
-target
-framework/target
-*.log
-*/*/target
