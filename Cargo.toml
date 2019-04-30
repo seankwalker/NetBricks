@@ -1,6 +1,7 @@
 [workspace]
-members=["framework",
-        "test/mme",
+members=["cpsc-490/*",
+    "framework",
+        # "test/mme",
         "test/framework-test",
         # "test/packet-test",
         # "test/packet-generation",
@@ -31,6 +32,7 @@ members=["framework",
         # "test/embedded-scheduler-test",
         # "test/embedded-scheduler-dependency-test"
     ]
+exclude=["cpsc-490/build.sh"]
 
 [profile.release]
 opt-level = 3

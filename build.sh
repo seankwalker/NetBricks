@@ -193,12 +193,12 @@ case $TASK in
                     echo $testname
                 fi
             done
-            echo "...and all unit and property-based tests"
+            # echo "...and all unit and property-based tests"
 
-            pushd $BASE_DIR/framework
-            export LD_LIBRARY_PATH="${NATIVE_LIB_PATH}:${DPDK_LD_PATH}:${LD_LIBRARY_PATH}"
-            ${CARGO} test
-            popd
+            # pushd $BASE_DIR/framework
+            # export LD_LIBRARY_PATH="${NATIVE_LIB_PATH}:${DPDK_LD_PATH}:${LD_LIBRARY_PATH}"
+            # ${CARGO} test
+            # popd
 
             for testname in ${examples[@]}; do
                 if [ -f $BASE_DIR/$testname/check.sh ]; then
@@ -227,9 +227,10 @@ case $TASK in
             echo "${executable} not found, building"
             ${BASE_DIR}/${BUILD_SCRIPT} build
         fi
+        echo "hello. $executable $@"
         export PATH="${BIN_DIR}:${PATH}"
         export LD_LIBRARY_PATH="${NATIVE_LIB_PATH}:${DPDK_LD_PATH}:${LD_LIBRARY_PATH}"
-        sudo env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" LD_PRELOAD="$LD_PRELOAD" \
+        env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" LD_PRELOAD="$LD_PRELOAD" \
             $executable "$@"
         ;;
     run_rel)
@@ -246,7 +247,7 @@ case $TASK in
         fi
         export PATH="${BIN_DIR}:${PATH}"
         export LD_LIBRARY_PATH="${NATIVE_LIB_PATH}:${DPDK_LD_PATH}:${LD_LIBRARY_PATH}"
-        sudo env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" LD_PRELOAD="$LD_PRELOAD" \
+        env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" LD_PRELOAD="$LD_PRELOAD" \
              $executable "$@"
         ;;
     debug)
@@ -263,7 +264,7 @@ case $TASK in
         fi
         export PATH="${BIN_DIR}:${PATH}"
         export LD_LIBRARY_PATH="${NATIVE_LIB_PATH}:${DPDK_LD_PATH}:${LD_LIBRARY_PATH}"
-        sudo env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" LD_PRELOAD="$LD_PRELOAD" \
+        env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" LD_PRELOAD="$LD_PRELOAD" \
             rust-gdb --args $executable "$@"
         ;;
     check_manifest)

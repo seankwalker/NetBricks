@@ -1,0 +1,7 @@
+[package]
+    name = "mme"
+    version = "0.1.0"
+    authors = ["Sean Walker <sean.walker@yale.edu>"]
+
+    [dependencies]
+    netbricks = { path = "../../framework", features = ["performance"] }
